@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>はじめてのWebページ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: lightyellow;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: red;
+    }
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+    .box {
+      background-color: white;
+      border: 2px solid #2c7be5;
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>こんにちは、西です。</h1>
+  <p>これは私がはじめて作ったWebページです。</p>
+
+  <div class="box">
+    <p>HTMLを勉強中です🎉</p>
+    <p>次はCSSでデザインを学びます！</p>
+  </div>
+　<button onclick="alert('おはようございます！')">クリックしてね！
+</button>
+　<img src="gazou.jpg" width="300">
+ <br><br>
+<input type="text" id="namae" placeholder="名前を入力してください">
+<button onclick="aisatsu()">送信</button>
+
+<p id="message"></p>
+
+<script>
+  function aisatsu() {
+    var namae = document.getElementById('namae').value;
+    document.getElementById('message').textContent = namae + 'さん、こんにちは！';
+  }
+</script>
+
+</body>
+</html>
