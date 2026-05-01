@@ -4,54 +4,204 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>はじめてのWebページ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sky: #e8f4f8;
+      --mint: #b2dfdb;
+      --teal: #26a69a;
+      --deep: #004d40;
+      --warm: #fff8e1;
+      --accent: #ff7043;
+      --text: #37474f;
+    }
+
     body {
-      font-family: sans-serif;
-      background-color: lightyellow;
-      text-align: center;
-      padding: 50px;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--sky);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background-image:
+        radial-gradient(circle at 20% 20%, #b2dfdb55 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, #ffe0b255 0%, transparent 50%);
     }
-    h1 {
-      color: red;
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,77,64,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      animation: fadeUp 0.6s ease both;
     }
-    p {
-      font-size: 18px;
-      color: #333;
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .box {
-      background-color: white;
-      border: 2px solid #2c7be5;
-      border-radius: 10px;
-      padding: 20px;
+
+    .card-header {
+      background: linear-gradient(135deg, #ff8c00, #ffd000);
+      padding: 36px 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0; right: 0;
+      height: 40px;
+      background: white;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .card-header h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 1.7rem;
+      color: #1a1a1a;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .card-header .emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header .tag-line {
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.5);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-body {
+      padding: 36px 32px 28px;
+    }
+
+    .intro {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .badge {
       display: inline-block;
+      background: var(--warm);
+      color: var(--accent);
+      border: 1.5px solid #ffcc80;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .photo-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--deep));
+      color: white;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 14px rgba(38,166,154,0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(38,166,154,0.45);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #90a4ae;
       margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
-  <h1>こんにちは、スマホから編集!</h1>
-  <p>これは私がはじめて作ったWebページです。</p>
-
-  <div class="box">
-    <p>HTMLを勉強中です🎉</p>
-    <p>次はCSSでデザインを学びます！</p>
+  <div class="card">
+    <div class="card-header">
+      <span class="tag-line">My First Website</span>
+      <span class="emoji">🔥</span>
+      <h1>こんにちは、<br>スマホから編集!</h1>
+    </div>
+    <div class="card-body">
+      <span class="badge">🎉 はじめてのWebページ</span>
+      <p class="intro">
+        これは私がはじめて作ったWebページです。<br>
+        HTMLを勉強中です。<br>
+        次はCSSでデザインを学びます！
+      </p>
+      <div class="photo-wrap">
+        <img src="https://tomonori2.github.io/my-first-app/gazou.jpg" alt="写真">
+      </div>
+      <button class="btn" onclick="alert('クリックありがとう！')">クリックしてね！</button>
+      <p class="footer-note">HTML学習中 🖥️</p>
+    </div>
   </div>
-　<button onclick="alert('おはようございます！')">クリックしてね！
-</button>
-　<img src="gazou.jpg" width="300">
- <br><br>
-<input type="text" id="namae" placeholder="名前を入力してください">
-<button onclick="aisatsu()">送信</button>
-
-<p id="message"></p>
-
-<script>
-  function aisatsu() {
-    var namae = document.getElementById('namae').value;
-    document.getElementById('message').textContent = namae + 'さん、こんにちは！';
-  }
-</script>
-
 </body>
 </html>
